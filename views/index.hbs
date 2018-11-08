@@ -1,0 +1,42 @@
+
+<div class="row">
+
+	<div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px">
+        <h1>{{title}}</h1>
+        <p>Welcome to {{title}}</p>
+		<hr />
+		<div style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px">
+
+			<form action="/school" method="post">
+				<input type="text" name="name" placeholder="School Name" required="true" /><br />
+				<input type="text" name="address" placeholder="Address" /><br />
+				<input type="text" name="city" placeholder="City" /><br />
+				<input type="text" name="state" placeholder="State" /><br />
+				<input type="submit" value="Add School">
+			</form>
+
+		</div>
+
+        <hr />
+ 
+		<div style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px">
+         
+			<form action="/student" method="post">
+				<input type="text" name="first_name" placeholder="First Name" required="true" /><br />
+				<input type="text" name="family_name" placeholder="Last Name" required="true"/><br />
+				<input type="email" name="email" placeholder="Email" /><br />
+				<input type="tel" name="phone" placeholder="Phone" /><br />
+                School: 
+                <select name="school" size="1" required="true">
+                    {{#each school_list}}
+                        <option value={{this._id}}>{{this.name}}</option>
+                    {{/each}}
+                </select>
+                Grade: <input type="number" name="grade" placeholder="Grade" min="0" max="12" step="1" value="9"/><br/>
+				<input type="submit" value="Add Student">
+			</form>
+
+		</div>
+
+	</div>
+</div>
