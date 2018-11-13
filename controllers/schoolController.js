@@ -20,7 +20,23 @@ exports.school_get = function(req, res) {
 }
 
 exports.school_update = function(req, res) {
-    res.send('NOT IMPLEMENTED');
+    const query = req.query // require: id, key=value
+	const schoolId = query.id
+	delete query['id']
+
+	School.findByIdAndUpdate(schoolId, query, {new:true})
+	.then(school => {
+		res.json({
+			confirmation: 'success',
+			data: school
+		})
+	})
+	.catch(err => {
+		res.json({
+			confirmation: 'fail',
+			message: err.message
+		})
+	})
 }
 
 exports.school_remove = function(req, res) {
@@ -53,7 +69,21 @@ exports.school_remove = function(req, res) {
 }
 
 exports.school_id = function(req, res) {
-    res.send('NOT IMPLEMENTED');
+	const id = req.params.id
+
+	School.findById(id)
+	.then(school => {
+		res.json({
+			confirmation: 'success',
+			data: school
+		})
+	})
+	.catch(err => {
+		res.json({
+			confirmation: 'fail',
+			message: 'School ' + id + ' not found.'
+		})
+	})
 }
 
 exports.school_post = function(req, res) {

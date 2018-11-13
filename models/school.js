@@ -11,7 +11,7 @@ var SchoolSchema = new Schema(
   }
 );
 
-// Virtual for book's URL
+// Virtual for School's URL
 SchoolSchema
 .virtual('url')
 .get(function () {
