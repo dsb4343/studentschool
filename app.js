@@ -6,12 +6,14 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
+var compression = require('compression');
+var helmet = require('helmet');
 
 var app = express();
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://studentschool:neo1978789@ds145395.mlab.com:45395/studentschool';
+var mongoDB = process.env.MONGODB_URI || 'mongodb://studentschool:neo1978789@ds145395.mlab.com:45395/studentschool';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
@@ -20,6 +22,11 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+app.use(helmet());
+
+//Compress all routes
+app.use(compression()); 
 
 app.use(logger('dev'));
 app.use(express.json());
