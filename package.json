@@ -1,8 +1,8 @@
 {
-  "name": "students",
-  "version": "0.0.0",
+  "name": "express-locallibrary",
+  "version": "0.1.0",
   "engines": {
-    "node": "8.12.0"
+    "node": "10.7.0"
   },
   "private": true,
   "scripts": {
@@ -10,15 +10,23 @@
     "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.18.3",
     "compression": "^1.7.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "hbs": "~4.0.1",
-    "helmet": "^3.15.0",
+    "event-stream": "3.3.4",
+    "express": "~4.16.4",
+    "express-validator": "^5.3.0",
+    "favicon": "0.0.2",
+    "helmet": "^3.14.0",
     "http-errors": "~1.6.2",
-    "mongoose": "^5.3.9",
-    "morgan": "~1.9.0"
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.14",
+    "morgan": "~1.9.1",
+    "path": "^0.12.7",
+    "pug": "2.0.3",
+    "serve-favicon": "~2.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.6"
